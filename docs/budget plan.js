@@ -59,11 +59,11 @@ window.onload = function () {
   // Firebase Auth
   // -------------------------------
   firebase.auth().onAuthStateChanged(async (user) => {
-    if (!user) return window.location.href = "auth.html";
+    if (!user) return window.location.href = "index.html";
     currentUser = user;
 
     document.getElementById("logout-btn").addEventListener("click", () => {
-      firebase.auth().signOut().then(() => window.location.href = "auth.html");
+      firebase.auth().signOut().then(() => window.location.href = "index.html");
     });
 
     transactionsRef = firebase.database().ref("users/" + user.uid + "/transactions");
