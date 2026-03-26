@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login / Register</title>
+  <link rel="stylesheet" href="budget plan.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<div class="cont">
+  <!-- LOGIN FORM -->
+  <div id="loginForm" class="form active">
+     <div class="log">
+        <img src="logo2.png" alt="Logo">
+      </div>
+    <h2>Login</h2>
+    <div class="input-group">
+      <i class="fas fa-envelope"></i>
+      <input type="email" id="loginEmail" placeholder="Enter your email" />
+    </div>
+    <div class="input-group">
+      <i class="fas fa-lock"></i>
+      <input type="password" id="loginPassword" placeholder="Enter your password" />
+      <label class="show-pass-label">
+        <input type="checkbox" id="showLoginPass" class="show-pass" />
+      </label>
+    </div>
+    <button id="loginBtn" class="btn">Login</button>
+    <p>Don’t have an account? <span class="link" id="toRegister">Register</span></p>
+  </div>
+
+  <!-- REGISTER FORM -->
+  <div id="registerForm" class="form">
+          <div class="log">
+        <img src="logo2.png" alt="Logo">
+      </div>
+    <h2>Register</h2>
+    <div class="input-group">
+      <i class="fas fa-user"></i>
+      <input type="text" id="registerName" placeholder="Enter your name" />
+    </div>
+    <div class="input-group">
+      <i class="fas fa-envelope"></i>
+      <input type="email" id="registerEmail" placeholder="Enter your email" />
+    </div>
+        <div class="input-group">
+      <i class="fas fa-house"></i>
+      <input type="address" id="registerAdress" placeholder="Enter your address" required/>
+    </div>
+   
+
+    <!-- Create Password -->
+    <div class="input-group">
+      <i class="fas fa-lock"></i>
+      <input type="password" id="registerPassword" placeholder="Create a password" required />
+      <label class="show-pass-label">
+        <input type="checkbox" id="showRegisterPass" class="show-pass" />
+      
+      </label>
+    </div>
+
+    <!-- Confirm Password -->
+    <div class="input-group">
+      <i class="fas fa-lock"></i>
+      <input type="password" id="registerConfirmPassword" placeholder="Confirm password" required />
+      <label class="show-pass-label">
+        <input type="checkbox" id="showConfirmPass" class="show-pass" />
+        
+      </label>
+    </div>
+
+    <button id="registerBtn" class="btn">Register</button>
+    <p>Already have an account? <span class="link" id="toLogin">Login</span></p>
+  </div>
+</div>
+
+<p id="message"></p>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="firebase-config.js"></script>
+<script src="auth.js"></script>
+
+<style>
+  body {
+    background: linear-gradient(to right, #6dd5ed, #2193b0);
+    display: flex; justify-content: center; align-items: center;
+    height: 100vh; margin: 0; font-family: Arial, sans-serif;
+  }
+  .cont {
+    background: #fff; padding: 30px; border-radius: 10px;
+    width: 350px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  h2 { text-align: center; margin-bottom: 20px; color: #333; }
+  .input-group {
+    display: flex; align-items: center; position: relative;
+    border: 1px solid #ccc; border-radius: 6px;
+    margin-bottom: 15px; padding: 10px;
+  }
+  .input-group i { color: #777; }
+  .input-group input {
+    border: none; outline: none; flex: 1;
+    font-size: 14px; margin-left: 10px;
+  }
+  .checkbox-group {
+    display: flex; align-items: center;
+    margin-bottom: 15px; font-size: 14px;
+  }
+  .checkbox-group input { margin-right: 8px; }
+  .btn {
+    width: 100%; padding: 10px; border: none;
+    border-radius: 6px; background: #007bff; color: #fff;
+    font-size: 16px; cursor: pointer;
+  }
+  .btn:hover { background: #0056b3; }
+  .form { display: none; }
+  .form.active { display: block; }
+  .link { color: #007bff; cursor: pointer; }
+  .show-pass-label {
+    display: flex; align-items: center;
+    font-size: 12px; color: #555;
+    margin-left: 8px; cursor: pointer;
+  }
+  .show-pass-label input {
+    margin-right: 4px;
+    cursor: pointer;
+  }
+</style>
+</body>
+</html>

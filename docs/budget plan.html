@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budget Planner</title>
+  <link rel="stylesheet" href="budget plan.css">
+</head>
+<body>
+
+  <!-- Removed lockScreen entirely -->
+
+  <div class="app" style="display:block;">
+    <div class="header">
+      <div class="logoo">
+        <img src="logo2.png" alt="Logo">
+      </div>
+      <h1>Budget Planner</h1>
+    </div>
+
+    <div class="top-buttons">
+      <button class="toggle-btn" id="theme-toggle">🌙</button>
+
+      <div class="menu">
+        <button class="toggle-btn">☰</button>
+        <div class="menu-content">
+          <p id="userEmailUI"></p>
+          <button id="logout-btn">Logout</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Budget Section -->
+    <section class="budget-section">
+      <h2>Set Your Budget</h2>
+      <form id="budget-form">
+        <input type="number" id="budget-input" placeholder="Enter budget amount" required>
+        <div class="budget-period">
+          <label><input type="radio" name="budgetType" value="Monthly" checked> Monthly</label>
+          <label><input type="radio" name="budgetType" value="Weekly"> Weekly</label>
+        </div>
+        <button type="submit">Save Budget</button>
+      </form>
+      <p id="budget-display">No budget set</p>
+    </section>
+
+    <!-- Transaction Section -->
+    <section class="transaction-section">
+      <h2>Add / Edit Transaction</h2>
+      <form id="transactionForm">
+        <input type="hidden" id="edit-index">
+        <input type="number" id="amount" placeholder="Amount" required>
+        <select id="type">
+          <option value="Income">Income</option>
+          <option value="Expense">Expense</option>
+        </select>
+        <select id="category"></select>
+        <input type="date" id="date" required>
+        <input type="text" id="note" placeholder="Note (optional)">
+        <button type="submit">Save</button>
+      </form>
+    </section>
+
+    <!-- Dashboard -->
+    <section class="dashboard">
+      <h2>Dashboard</h2>
+      <div class="summary">
+        <p>Total Income: <span id="total-income">₱0</span></p>
+        <p>Total Expenses: <span id="total-expenses">₱0</span></p>
+        <p>Remaining Balance: <span id="balance">₱0</span></p>
+      </div>
+    </section>
+
+    <!-- Charts -->
+    <section class="charts">
+      <div class="chart-container">
+        <h3>Income vs Expenses</h3>
+        <canvas id="incomeExpenseChart"></canvas>
+      </div>
+      <div class="chart-container">
+        <h3>Expenses by Category</h3>
+        <canvas id="expenseCategoryChart"></canvas>
+      </div>
+    </section>
+
+    <!-- Transactions List -->
+    <section class="transactions">
+      <h2>Transactions</h2>
+      <table id="transaction-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Note</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section class="monthly-summary">
+      <h2>Monthly Summary</h2>
+      <div id="monthly-summary-container"></div>
+    </section>
+
+    <section class="monthly-summary-chart">
+      <h2>Monthly Totals Chart</h2>
+      <canvas id="monthlyChart"></canvas>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal" id="imgModal">
+      <img id="modalImg" src="">
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="firebase-config.js"></script>
+
+    <script src="chart.js"></script>
+    <script src="budget plan.js"></script>
+    <script src="transaction.js"></script>
+
+  </div>
+
+</body>
+</html>
